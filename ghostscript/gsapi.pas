@@ -35,7 +35,9 @@
 // 2013-12-03: Add gsapi_set_arg_encoding
 
 
-{$DEFINE USE_IN_TRANSCRIPT} // 2013-01-09 Loads exception handling unit for Transcript first
+// 2016-12-15 Disabled define since it's difficult to load Trans Exception Dialog here when
+// we are going to use this in a package.
+{.$DEFINE USE_IN_TRANSCRIPT} // 2013-01-09 Loads exception handling unit for Transcript first
 
 unit gsapi;
 
@@ -154,8 +156,8 @@ const
 
 type
   TGSAPIrevision = packed record
-    product: PChar;
-    copyright: PChar;
+    product: PAnsiChar;
+    copyright: PAnsiChar;
     revision: longint;
     revisiondate: longint;
   end;
@@ -165,14 +167,14 @@ type
   // doing a pointer with space wide enough
   Pgs_main_instance = Pointer;
 
-  TStdioFunction = function(caller_handle:Pointer;buf:PChar;len:integer):integer stdcall;
+  TStdioFunction = function(caller_handle:Pointer;buf:PAnsiChar;len:integer):integer stdcall;
   TPollFunction = function(caller_handle:Pointer):integer stdcall;
 
   TDisplayEvent = function(handle:Pointer;device:Pointer):integer; cdecl;
   TDisplayPreResizeEvent = function(handle:Pointer;device:Pointer;
          width:integer;height:integer;raster:integer;format:UINT):integer;cdecl;
   TDisplayResizeEvent = function(handle:Pointer;device:Pointer;
-         width:integer;height:integer;raster:integer;format:UINT;pimage:PChar):integer;cdecl;
+         width:integer;height:integer;raster:integer;format:UINT;pimage:PAnsiChar):integer;cdecl;
   TDisplayPageEvent = function(handle:Pointer;device:Pointer;copies:integer;flush:integer):integer;cdecl;
   TDisplayUpdateEvent = function(handle:Pointer;device:Pointer;x:integer;y:integer;w:integer;h:integer):integer;cdecl;
   TDisplayMemAlloc = procedure(handle:Pointer;device:Pointer;size:ulong);cdecl;
@@ -237,7 +239,8 @@ type
 
   end;
   PDisplayCallback = ^TDisplayCallback;
-  PPChar = array of PChar;
+  // Warning: Don't change to PPAnsiChar below, because that name is used in JclBase!
+  ArrayOfAnsiChar = array of PAnsiChar;
 
 (** STATIC LINKING:
 {$EXTERNALSYM gsapi_revision}
@@ -288,18 +291,18 @@ type
     callback:PDisplayCallback):Integer; stdcall;
   gsapi_set_arg_encoding_func = function(pinstance:Pgs_main_instance; encoding: Integer): Integer; stdcall;
   gsapi_init_with_args_func = function(pinstance:Pgs_main_instance;
-    argc:integer;argv:PPChar):integer; stdcall;
+    argc:integer;argv:ArrayOfAnsiChar):integer; stdcall;
   gsapi_run_string_begin_func = function(pinstance:Pgs_main_instance;
     user_errors:integer;pexit_code:Pinteger):integer; stdcall;
   gsapi_run_string_continue_func = function(pinstance:Pgs_main_instance;
-    str:PChar;len:integer;user_errors:integer;pexit_code:pinteger):integer; stdcall;
+    str:PAnsiChar;len:integer;user_errors:integer;pexit_code:pinteger):integer; stdcall;
   gsapi_run_string_end_func = function(pinstance:Pgs_main_instance;
     user_errors:integer;pexit_code:pinteger):integer; stdcall;
   gsapi_run_string_with_length_func = function(pinstance:Pgs_main_instance;
-    str:PChar;len:integer;user_errors:integer;pexit_code:pinteger):integer; stdcall;
+    str:PAnsiChar;len:integer;user_errors:integer;pexit_code:pinteger):integer; stdcall;
   gsapi_run_string_func = function(pinstance:Pgs_main_instance;
-    str:PChar;user_errors:integer;pexit_code:pinteger):integer; stdcall;
-  gsapi_run_file_func = function(pinstance:Pgs_main_instance;file_name:PChar;
+    str:PAnsiChar;user_errors:integer;pexit_code:pinteger):integer; stdcall;
+  gsapi_run_file_func = function(pinstance:Pgs_main_instance;file_name:PAnsiChar;
     user_errors:integer;pexit_code:pinteger):integer; stdcall;
   gsapi_exit_func = function(pinstance:Pgs_main_instance):integer; stdcall;
 
@@ -402,9 +405,9 @@ var
   ModuleHandle: HMODULE = 0;
 
 procedure LoadGsapi;
-  function GetSymbol(SymbolName: PChar): Pointer;
+  function GetSymbol(SymbolName: PAnsiChar): Pointer;
   begin
-    Result := GetProcAddress(ModuleHandle, PChar(SymbolName));
+    Result := GetProcAddress(ModuleHandle, PAnsiChar(SymbolName));
   end;
 begin
   if gsdll32 <> '' then
