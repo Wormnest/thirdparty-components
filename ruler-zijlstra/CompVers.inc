@@ -96,6 +96,15 @@
   {$DEFINE DELPHI}
 {$ENDIF}
 
+{$IFDEF CONDITIONALEXPRESSIONS}
+  {$IF CompilerVersion >= 18}
+    // Delphi 2006 and higher
+    {$DEFINE COMPILER9}
+    {$DEFINE DELPHI9}
+    {$DEFINE DELPHI}
+  {$IFEND}
+{$ENDIF}
+
 
 {******************************************************************************}
 { COMPILERx_UP definitions                                                     }
