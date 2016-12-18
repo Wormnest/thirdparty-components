@@ -11,3 +11,6 @@ lib/
 *.dof
 *.drc
 *.dsk
+**.local
+**.identcache
+**.stat
