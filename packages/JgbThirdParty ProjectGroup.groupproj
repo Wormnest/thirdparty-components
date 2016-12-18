@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6F274E86-ECB2-49B4-8B00-1CD4F7DDCA75}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GhostScriptLib.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TwainWilsonLib.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TwainWilsonLibDesign.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RulerZijlstraLib.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RulerZijlstraLibDesign.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GhostScriptLib">
+        <MSBuild Projects="GhostScriptLib.dproj"/>
+    </Target>
+    <Target Name="GhostScriptLib:Clean">
+        <MSBuild Projects="GhostScriptLib.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GhostScriptLib:Make">
+        <MSBuild Projects="GhostScriptLib.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TwainWilsonLib">
+        <MSBuild Projects="TwainWilsonLib.dproj"/>
+    </Target>
+    <Target Name="TwainWilsonLib:Clean">
+        <MSBuild Projects="TwainWilsonLib.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TwainWilsonLib:Make">
+        <MSBuild Projects="TwainWilsonLib.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TwainWilsonLibDesign">
+        <MSBuild Projects="TwainWilsonLibDesign.dproj"/>
+    </Target>
+    <Target Name="TwainWilsonLibDesign:Clean">
+        <MSBuild Projects="TwainWilsonLibDesign.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TwainWilsonLibDesign:Make">
+        <MSBuild Projects="TwainWilsonLibDesign.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RulerZijlstraLib">
+        <MSBuild Projects="RulerZijlstraLib.dproj"/>
+    </Target>
+    <Target Name="RulerZijlstraLib:Clean">
+        <MSBuild Projects="RulerZijlstraLib.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RulerZijlstraLib:Make">
+        <MSBuild Projects="RulerZijlstraLib.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RulerZijlstraLibDesign">
+        <MSBuild Projects="RulerZijlstraLibDesign.dproj"/>
+    </Target>
+    <Target Name="RulerZijlstraLibDesign:Clean">
+        <MSBuild Projects="RulerZijlstraLibDesign.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RulerZijlstraLibDesign:Make">
+        <MSBuild Projects="RulerZijlstraLibDesign.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GhostScriptLib;TwainWilsonLib;TwainWilsonLibDesign;RulerZijlstraLib;RulerZijlstraLibDesign"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GhostScriptLib:Clean;TwainWilsonLib:Clean;TwainWilsonLibDesign:Clean;RulerZijlstraLib:Clean;RulerZijlstraLibDesign:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GhostScriptLib:Make;TwainWilsonLib:Make;TwainWilsonLibDesign:Make;RulerZijlstraLib:Make;RulerZijlstraLibDesign:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
