@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{574FB5D6-DB06-4CE7-8A6C-20CB31D367E7}</ProjectGuid>
         <MainSource>RulerZijlstraLib.dpk</MainSource>
-        <ProjectVersion>18.2</ProjectVersion>
+        <ProjectVersion>18.6</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
