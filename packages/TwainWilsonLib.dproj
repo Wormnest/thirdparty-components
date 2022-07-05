@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{0A1D4F57-741B-4874-9DF7-86D75C5D33F0}</ProjectGuid>
         <MainSource>TwainWilsonLib.dpk</MainSource>
-        <ProjectVersion>18.6</ProjectVersion>
+        <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>

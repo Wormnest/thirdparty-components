@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{C8C05FC4-D330-4CA3-A756-8F9E11BA409A}</ProjectGuid>
         <MainSource>TwainWilsonLibDesign.dpk</MainSource>
-        <ProjectVersion>18.6</ProjectVersion>
+        <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>

@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{12BF7C62-AA04-419D-981C-58B17B990B31}</ProjectGuid>
         <MainSource>GhostScriptLib.dpk</MainSource>
-        <ProjectVersion>18.6</ProjectVersion>
+        <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>

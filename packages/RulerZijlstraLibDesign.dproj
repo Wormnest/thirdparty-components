@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{5D3C1CCC-4D42-4776-94F1-D0D0E7478B20}</ProjectGuid>
         <MainSource>RulerZijlstraLibDesign.dpk</MainSource>
-        <ProjectVersion>18.6</ProjectVersion>
+        <ProjectVersion>19.2</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
